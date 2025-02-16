@@ -9,7 +9,8 @@ def create_app(config_class=Config):
     # Initialize the app with the config
     config_class.init_app(app)
     
-    CORS(app)
+    CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})
+
     
     from app.routes import bp
     app.register_blueprint(bp)
